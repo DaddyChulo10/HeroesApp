@@ -6,26 +6,8 @@
   <div fxFlex="30" fxFlex.lg="15" fxFlex.sm="30" *ngFor="let item of heroes">
 
     
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>{{item.superhero}}</mat-card-title>
-        <mat-card-subtitle> {{item.superhero}} </mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image src="assets/heroes/{{item.id}}.jpg" alt="{{item.superhero}}">
-      <mat-card-content>
-        <h3> {{item.publisher}} </h3>
-        <p>
-          <strong>Primera Aparición: </strong> {{item.first_appearance}}
-          <br>
-          <strong>Personaje: </strong> {{ item.characters }}
-        </p>
-        <mat-card-actions>
-          <button mat-button color="warn">Leer más..</button>
-          <button mat-button color="info">Editar</button>
-        </mat-card-actions>
+    <app-heroe-tarjeta-components [item]="item" ></app-heroe-tarjeta-components>
 
 
-      </mat-card-content>
-    </mat-card>
   </div>
 </div>
