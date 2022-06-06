@@ -11,6 +11,7 @@ import { MaterialModule } from '../material/material.module';
 import { HeroeTarjetaComponentsComponent } from './components/heroe-tarjeta-components/heroe-tarjeta-components.component';
 import { ImagenPipe } from './pipes/imagen.pipe';
 import { FormsModule } from '@angular/forms';
+import { ConfirmarComponent } from './components/confirmar/confirmar.component';
 
 
 
@@ -23,7 +24,8 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     ListadoComponent,
     HeroeTarjetaComponentsComponent,
-    ImagenPipe
+    ImagenPipe,
+    ConfirmarComponent
   ],
   imports: [
     CommonModule,
