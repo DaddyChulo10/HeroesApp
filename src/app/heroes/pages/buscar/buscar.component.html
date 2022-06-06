@@ -1,1 +1,48 @@
-<p>buscar works!</p>
+<div>
+  <h1>Buscador de Héroes</h1>
+  <mat-divider></mat-divider>
+</div>
+<br> <br>
+<div fxLayout="column">
+  <h3>Buscador</h3>
+  <mat-form-field>
+    <mat-label>Super Heroe</mat-label>
+    <input type="text" placeholder="Selecciona uno" aria-label="Héroe" matInput [(ngModel)]="termino"
+      [matAutocomplete]="auto" (input)="buscando()">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="opcionSeleccionada($event)">
+      <mat-option *ngFor="let item of heroes" [value]="item">
+        {{item.superhero}}
+      </mat-option>
+      <mat-option value="" *ngIf="heroes.length === 0 && termino.trim().length > 0">
+        <span>No se encontraron resultados con este valor: {{termino}} </span>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</div>
+
+<!-- <div>
+  <pre> {{heroeSeleccionado | json}} </pre>
+</div> -->
+
+
+<mat-card *ngIf="heroeSeleccionado">
+  <mat-card-header>
+    <mat-card-title>{{heroeSeleccionado?.superhero}}</mat-card-title>
+    <mat-card-subtitle> {{heroeSeleccionado?.alter_ego}} </mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="assets/heroes/{{heroeSeleccionado?.id}}.jpg">
+  <mat-card-content>
+    <h3> {{heroeSeleccionado?.publisher}} </h3>
+    <p>
+      <strong>Primera Aparición: </strong> {{heroeSeleccionado?.first_appearance}}
+      <br>
+      <strong>Personaje: </strong> {{ heroeSeleccionado?.characters }}
+    </p>
+    <mat-card-actions>
+      <button mat-button color="warn" [routerLink]="['/heroes', heroeSeleccionado?.id]">Leer más..</button>
+      <button mat-button color="info" [routerLink]="['/heroes/editar/', heroeSeleccionado?.id]">Editar</button>
+    </mat-card-actions>
+
+
+  </mat-card-content>
+</mat-card>
